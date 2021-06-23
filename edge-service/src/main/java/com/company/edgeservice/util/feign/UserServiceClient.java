@@ -1,4 +1,4 @@
 package com.company.edgeservice.util.feign;
 
-public class UserServiceClient {
+public interface UserServiceClient {
 }
