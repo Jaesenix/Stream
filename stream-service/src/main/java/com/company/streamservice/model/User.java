@@ -4,45 +4,37 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name="meetup")
-public class Meetup implements Serializable {
-
+@Table(name="user")
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer meetupId;
     private Integer userId;
     private String title;
-    private String date;
-    private String time;
     private String description;
     private String link;
     private String category;
 
-    public Meetup() {
+@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+@JoinColumn(name = "userId")
+    private Set<Meetup> meetups= new HashSet<>();
 
-    }
+public User(){
 
-    public Meetup(Integer meetupId, Integer userId, String title, String date, String time, String description, String link, String category) {
-        this.meetupId = meetupId;
+}
+
+    public User(Integer userId, String title, String description, String link, String category, Set<Meetup> meetups) {
         this.userId = userId;
         this.title = title;
-        this.date = date;
-        this.time = time;
         this.description = description;
         this.link = link;
         this.category = category;
-    }
-
-    public Integer getMeetupId() {
-        return meetupId;
-    }
-
-    public void setMeetupId(Integer meetupId) {
-        this.meetupId = meetupId;
+        this.meetups = meetups;
     }
 
     public Integer getUserId() {
@@ -59,22 +51,6 @@ public class Meetup implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public String getDescription() {
@@ -101,30 +77,37 @@ public class Meetup implements Serializable {
         this.category = category;
     }
 
+    public Set<Meetup> getMeetups() {
+        return meetups;
+    }
+
+    public void setMeetups(Set<Meetup> meetups) {
+        this.meetups = meetups;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Meetup meetup = (Meetup) o;
-        return Objects.equals(meetupId, meetup.meetupId) && Objects.equals(userId, meetup.userId) && Objects.equals(title, meetup.title) && Objects.equals(date, meetup.date) && Objects.equals(time, meetup.time) && Objects.equals(description, meetup.description) && Objects.equals(link, meetup.link) && Objects.equals(category, meetup.category);
+        User user = (User) o;
+        return Objects.equals(userId, user.userId) && Objects.equals(title, user.title) && Objects.equals(description, user.description) && Objects.equals(link, user.link) && Objects.equals(category, user.category) && Objects.equals(meetups, user.meetups);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(meetupId, userId, title, date, time, description, link, category);
+        return Objects.hash(userId, title, description, link, category, meetups);
     }
 
     @Override
     public String toString() {
-        return "Meetup{" +
-                "meetupId=" + meetupId +
-                ", userId=" + userId +
+        return "User{" +
+                "userId=" + userId +
                 ", title='" + title + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
                 ", description='" + description + '\'' +
                 ", link='" + link + '\'' +
                 ", category='" + category + '\'' +
+                ", meetups=" + meetups +
                 '}';
     }
 }

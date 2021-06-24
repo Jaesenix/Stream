@@ -19,6 +19,7 @@ public class MeetupController {
     public Meetup createMeetup(@RequestBody Meetup meetup) {
         return meetupRepo.save(meetup);
     }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Meetup> getAllMeetups(){
