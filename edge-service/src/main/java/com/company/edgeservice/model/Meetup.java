@@ -3,12 +3,22 @@ package com.company.edgeservice.model;
 import java.util.Objects;
 
 public class Meetup {
+
+    private Integer id;
     private String title;
     private String date;
     private String time;
     private String description;
     private String link;
     private String category;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -63,18 +73,19 @@ public class Meetup {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Meetup meetup = (Meetup) o;
-        return Objects.equals(title, meetup.title) && Objects.equals(date, meetup.date) && Objects.equals(time, meetup.time) && Objects.equals(description, meetup.description) && Objects.equals(link, meetup.link) && Objects.equals(category, meetup.category);
+        return Objects.equals(id, meetup.id) && Objects.equals(title, meetup.title) && Objects.equals(date, meetup.date) && Objects.equals(time, meetup.time) && Objects.equals(description, meetup.description) && Objects.equals(link, meetup.link) && Objects.equals(category, meetup.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, date, time, description, link, category);
+        return Objects.hash(id, title, date, time, description, link, category);
     }
 
     @Override
     public String toString() {
         return "Meetup{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +
                 ", description='" + description + '\'' +

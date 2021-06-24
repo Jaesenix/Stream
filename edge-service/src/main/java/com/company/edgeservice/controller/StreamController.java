@@ -14,8 +14,8 @@ import java.util.List;
 public class StreamController {
     @Autowired
     private MeetupServiceClient meetupFeignClient;
-    @Autowired
-    private UserServiceClient userFeignClient;
+//    @Autowired
+//    private UserServiceClient userFeignClient;
 
     @RequestMapping(value="/meetup", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
