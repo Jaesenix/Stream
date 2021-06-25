@@ -16,4 +16,5 @@ public interface MeetupServiceClient {
 
     @PostMapping("/meetup")
     public Meetup creatingANewMeetup(@RequestBody Meetup meetup);
+
 }

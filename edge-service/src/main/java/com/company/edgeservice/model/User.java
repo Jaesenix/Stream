@@ -2,24 +2,13 @@ package com.company.edgeservice.model;
 
 import java.util.Objects;
 
-public class Meetup {
+public class User {
 
-    private Integer meetupId;
     private Integer userId;
     private String title;
-    private String date;
-    private String time;
     private String description;
     private String link;
     private String category;
-
-    public Integer getMeetupId() {
-        return meetupId;
-    }
-
-    public void setMeetupId(Integer meetupId) {
-        this.meetupId = meetupId;
-    }
 
     public Integer getUserId() {
         return userId;
@@ -35,22 +24,6 @@ public class Meetup {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public String getDescription() {
@@ -81,23 +54,20 @@ public class Meetup {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Meetup meetup = (Meetup) o;
-        return Objects.equals(meetupId, meetup.meetupId) && Objects.equals(userId, meetup.userId) && Objects.equals(title, meetup.title) && Objects.equals(date, meetup.date) && Objects.equals(time, meetup.time) && Objects.equals(description, meetup.description) && Objects.equals(link, meetup.link) && Objects.equals(category, meetup.category);
+        User user = (User) o;
+        return Objects.equals(userId, user.userId) && Objects.equals(title, user.title) && Objects.equals(description, user.description) && Objects.equals(link, user.link) && Objects.equals(category, user.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(meetupId, userId, title, date, time, description, link, category);
+        return Objects.hash(userId, title, description, link, category);
     }
 
     @Override
     public String toString() {
-        return "Meetup{" +
-                "meetupId=" + meetupId +
-                ", userId=" + userId +
+        return "User{" +
+                "userId=" + userId +
                 ", title='" + title + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
                 ", description='" + description + '\'' +
                 ", link='" + link + '\'' +
                 ", category='" + category + '\'' +
