@@ -2,8 +2,7 @@ package com.company.edgeservice.controller;
 
 import com.company.edgeservice.model.Meetup;
 import com.company.edgeservice.model.User;
-import com.company.edgeservice.util.feign.MeetupServiceClient;
-import com.company.edgeservice.util.feign.UserServiceClient;
+import com.company.edgeservice.util.feign.ServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +13,7 @@ import java.util.List;
 @RequestMapping("/stream")
 public class StreamController {
     @Autowired
-    private MeetupServiceClient meetupFeignClient;
-    @Autowired
-    private UserServiceClient userFeignClient;
+    private ServiceClient meetupFeignClient;
 
     @RequestMapping(value="/meetup", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
@@ -37,7 +34,7 @@ public class StreamController {
     @ResponseStatus(HttpStatus.OK)
     public List<Meetup> getAllUsers(){
         System.out.println("called the edge service. getting all users");
-        return userFeignClient.getAllOfTheUsers();
+        return meetupFeignClient.getAllOfTheUsers();
 
     }
 
@@ -45,6 +42,6 @@ public class StreamController {
     @ResponseStatus(HttpStatus.OK)
     public User addUser(@RequestBody User user) {
         System.out.println("called edge service. User made");
-        return userFeignClient.creatingANewUser(user);
+        return meetupFeignClient.creatingANewUser(user);
     }
 }
