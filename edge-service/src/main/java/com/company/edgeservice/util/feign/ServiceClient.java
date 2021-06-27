@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @FeignClient(name = "stream-service")
+
 public interface ServiceClient {
 
     @GetMapping("/meetup")
@@ -17,8 +18,6 @@ public interface ServiceClient {
 
     @PostMapping("/meetup")
     public Meetup creatingANewMeetup(@RequestBody Meetup meetup);
-
-
     @GetMapping("/user")
     public List<Meetup> getAllOfTheUsers();
 
