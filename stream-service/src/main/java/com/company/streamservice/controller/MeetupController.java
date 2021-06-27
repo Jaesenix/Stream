@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
 public class MeetupController {
     @Autowired
     MeetupRepository meetupRepo;
@@ -41,6 +40,12 @@ public class MeetupController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateMeetup(@RequestBody Meetup meetup) {
         meetupRepo.save(meetup);
+    }
+
+    @DeleteMapping("/meetup/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteMeetup(@PathVariable Integer id) {
+        meetupRepo.deleteById(id);
     }
 
 }

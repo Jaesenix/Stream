@@ -18,6 +18,7 @@ public interface ServiceClient {
 
     @PostMapping("/meetup")
     public Meetup creatingANewMeetup(@RequestBody Meetup meetup);
+
     @GetMapping("/user")
     public List<Meetup> getAllOfTheUsers();
 

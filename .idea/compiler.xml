@@ -13,10 +13,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="config-server" target="1.5" />
+      <module name="config-server" target="1.8" />
       <module name="edge-service" target="1.8" />
-      <module name="service-registry" target="1.5" />
-      <module name="stream-service" target="1.5" />
+      <module name="service-registry" target="1.8" />
+      <module name="stream-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

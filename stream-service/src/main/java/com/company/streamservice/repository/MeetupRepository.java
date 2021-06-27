@@ -8,4 +8,6 @@ import java.util.List;
 public interface MeetupRepository extends JpaRepository<Meetup, Integer> {
 
     List<Meetup> findAllMeetupsByCategory(String category);
+
+
 }
