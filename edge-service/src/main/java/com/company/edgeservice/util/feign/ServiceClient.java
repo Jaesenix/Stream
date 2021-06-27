@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @FeignClient(name = "stream-service")
-public interface StreamServiceClient {
+
+public interface ServiceClient {
 
     @GetMapping("/meetup")
     public List<Meetup> getAllOfTheMeetups();
