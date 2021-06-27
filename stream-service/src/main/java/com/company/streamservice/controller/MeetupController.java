@@ -9,26 +9,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/meetup")
+@RequestMapping
 public class MeetupController {
     @Autowired
     MeetupRepository meetupRepo;
 
-    @PostMapping
+    @PostMapping("/meetup")
     @ResponseStatus(HttpStatus.CREATED)
     public Meetup createMeetup(@RequestBody Meetup meetup) {
         return meetupRepo.save(meetup);
     }
 
-    @GetMapping
+    @GetMapping(value = "/meetup")
     @ResponseStatus(HttpStatus.OK)
     public List<Meetup> getAllMeetups(){
         return meetupRepo.findAll();
     }
 
-    @GetMapping(value="/{id}")
+    @GetMapping(value="/meetup/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Meetup getMeetupById(@PathVariable Integer id) {
         return meetupRepo.getById(id);
     }
+
+    @GetMapping("/meetup/category/{category}")
+    public List<Meetup> getMeetupByCategory(@PathVariable String category){
+        return meetupRepo.findAllMeetupsByCategory(category);
+    }
+
+    @PutMapping("/meetup")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateMeetup(@RequestBody Meetup meetup) {
+        meetupRepo.save(meetup);
+    }
+
 }
