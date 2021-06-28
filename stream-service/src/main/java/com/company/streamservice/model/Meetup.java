@@ -3,18 +3,16 @@ package com.company.streamservice.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name="meetup")
-public class Meetup implements Serializable {
+public class Meetup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer meetupId;
-    private Integer userId;
     private String title;
     private String date;
     private String time;
@@ -26,9 +24,8 @@ public class Meetup implements Serializable {
 
     }
 
-    public Meetup(Integer meetupId, Integer userId, String title, String date, String time, String description, String link, String category) {
+    public Meetup(Integer meetupId, String title, String date, String time, String description, String link, String category) {
         this.meetupId = meetupId;
-        this.userId = userId;
         this.title = title;
         this.date = date;
         this.time = time;
@@ -43,14 +40,6 @@ public class Meetup implements Serializable {
 
     public void setMeetupId(Integer meetupId) {
         this.meetupId = meetupId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public String getTitle() {
@@ -106,19 +95,18 @@ public class Meetup implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Meetup meetup = (Meetup) o;
-        return Objects.equals(meetupId, meetup.meetupId) && Objects.equals(userId, meetup.userId) && Objects.equals(title, meetup.title) && Objects.equals(date, meetup.date) && Objects.equals(time, meetup.time) && Objects.equals(description, meetup.description) && Objects.equals(link, meetup.link) && Objects.equals(category, meetup.category);
+        return Objects.equals(meetupId, meetup.meetupId) && Objects.equals(title, meetup.title) && Objects.equals(date, meetup.date) && Objects.equals(time, meetup.time) && Objects.equals(description, meetup.description) && Objects.equals(link, meetup.link) && Objects.equals(category, meetup.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(meetupId, userId, title, date, time, description, link, category);
+        return Objects.hash(meetupId, title, date, time, description, link, category);
     }
 
     @Override
     public String toString() {
         return "Meetup{" +
                 "meetupId=" + meetupId +
-                ", userId=" + userId +
                 ", title='" + title + '\'' +
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +

@@ -1,11 +1,13 @@
 package com.company.edgeservice.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
 public class Meetup {
 
     private Integer meetupId;
-    private Integer userId;
     private String title;
     private String date;
     private String time;
@@ -17,16 +19,19 @@ public class Meetup {
         return meetupId;
     }
 
+    public Meetup(Integer meetupId, String title, String date, String time, String description, String link, String category) {
+        this.meetupId = meetupId;
+        this.title = title;
+        this.date = date;
+        this.time = time;
+        this.description = description;
+        this.link = link;
+        this.category = category;
+    }
+
+
     public void setMeetupId(Integer meetupId) {
         this.meetupId = meetupId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public String getTitle() {
@@ -82,19 +87,18 @@ public class Meetup {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Meetup meetup = (Meetup) o;
-        return Objects.equals(meetupId, meetup.meetupId) && Objects.equals(userId, meetup.userId) && Objects.equals(title, meetup.title) && Objects.equals(date, meetup.date) && Objects.equals(time, meetup.time) && Objects.equals(description, meetup.description) && Objects.equals(link, meetup.link) && Objects.equals(category, meetup.category);
+        return Objects.equals(meetupId, meetup.meetupId) && Objects.equals(title, meetup.title) && Objects.equals(date, meetup.date) && Objects.equals(time, meetup.time) && Objects.equals(description, meetup.description) && Objects.equals(link, meetup.link) && Objects.equals(category, meetup.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(meetupId, userId, title, date, time, description, link, category);
+        return Objects.hash(meetupId, title, date, time, description, link, category);
     }
 
     @Override
     public String toString() {
         return "Meetup{" +
                 "meetupId=" + meetupId +
-                ", userId=" + userId +
                 ", title='" + title + '\'' +
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +
