@@ -3,12 +3,13 @@ package com.company.streamservice.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name="meetup")
-public class Meetup {
+public class Meetup implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

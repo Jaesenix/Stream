@@ -9,41 +9,41 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/meetup")
+//@RequestMapping("/meetup")
 public class MeetupController {
     @Autowired
     MeetupRepository meetupRepo;
 
-    @PostMapping
+    @PostMapping("/meetup")
     @ResponseStatus(HttpStatus.CREATED)
     public Meetup createMeetup(@RequestBody Meetup meetup) {
         return meetupRepo.save(meetup);
     }
 
-    @GetMapping
+    @GetMapping("/meetup")
     @ResponseStatus(HttpStatus.OK)
     public List<Meetup> getAllMeetups(){
         return meetupRepo.findAll();
     }
 
-    @GetMapping(value="/{id}")
+    @GetMapping("/meetup/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Meetup getMeetupById(@PathVariable Integer id) {
         return meetupRepo.getById(id);
     }
 
-    @GetMapping(value="/category/{category}")
+    @GetMapping("/meetup/category/{category}")
     public List<Meetup> getMeetupByCategory(@PathVariable String category){
         return meetupRepo.findAllMeetupsByCategory(category);
     }
 
-    @PutMapping
+    @PutMapping("/meetup")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateMeetup(@RequestBody Meetup meetup) {
         meetupRepo.save(meetup);
     }
 
-    @DeleteMapping(value="/{id}")
+    @DeleteMapping("/meetup/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteMeetup(@PathVariable Integer id) {
         meetupRepo.deleteById(id);

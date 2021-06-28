@@ -15,8 +15,9 @@ public class Meetup {
     private String link;
     private String category;
 
-    public Integer getMeetupId() {
-        return meetupId;
+
+    public Meetup() {
+
     }
 
     public Meetup(Integer meetupId, String title, String date, String time, String description, String link, String category) {
@@ -29,6 +30,10 @@ public class Meetup {
         this.category = category;
     }
 
+
+    public Integer getMeetupId() {
+        return meetupId;
+    }
 
     public void setMeetupId(Integer meetupId) {
         this.meetupId = meetupId;

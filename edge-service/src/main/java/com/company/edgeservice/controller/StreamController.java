@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/stream")
+//@RequestMapping("/stream")
 public class StreamController {
     @Autowired
 
