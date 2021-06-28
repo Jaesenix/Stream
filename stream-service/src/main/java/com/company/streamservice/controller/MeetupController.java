@@ -26,13 +26,13 @@ public class MeetupController {
         return meetupRepo.findAll();
     }
 
-    @GetMapping("/meetup/{id}")
+    @GetMapping("/meetup/{meetupId}")
     @ResponseStatus(HttpStatus.OK)
-    public Meetup getMeetupById(@PathVariable Integer id) {
-        return meetupRepo.getById(id);
+    public Meetup getMeetupById(@PathVariable Integer meetupId) {
+        return meetupRepo.getById(meetupId);
     }
 
-    @GetMapping("/meetup/category/{category}")
+    @GetMapping("/meetup/{category}")
     public List<Meetup> getMeetupByCategory(@PathVariable String category){
         return meetupRepo.findAllMeetupsByCategory(category);
     }

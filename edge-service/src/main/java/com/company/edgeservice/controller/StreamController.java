@@ -24,6 +24,13 @@ public class StreamController {
 
     }
 
+    @RequestMapping(value="/meetup/{category}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Meetup> getAllMeetupsByCategory(@PathVariable String category){
+        return serviceClient.getAllOfTheMeetupsByCategory(category);
+
+    }
+
     @RequestMapping(value="/meetup", method= RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public Meetup addMeetup(@RequestBody Meetup meetup) {
