@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+//@RequestMapping("/meetup")
 public class MeetupController {
     @Autowired
     MeetupRepository meetupRepo;
@@ -20,13 +20,13 @@ public class MeetupController {
         return meetupRepo.save(meetup);
     }
 
-    @GetMapping(value = "/meetup")
+    @GetMapping("/meetup")
     @ResponseStatus(HttpStatus.OK)
     public List<Meetup> getAllMeetups(){
         return meetupRepo.findAll();
     }
 
-    @GetMapping(value="/meetup/{id}")
+    @GetMapping("/meetup/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Meetup getMeetupById(@PathVariable Integer id) {
         return meetupRepo.getById(id);
@@ -41,6 +41,12 @@ public class MeetupController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateMeetup(@RequestBody Meetup meetup) {
         meetupRepo.save(meetup);
+    }
+
+    @DeleteMapping("/meetup/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteMeetup(@PathVariable Integer id) {
+        meetupRepo.deleteById(id);
     }
 
 }
