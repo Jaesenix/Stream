@@ -20,7 +20,7 @@ public interface ServiceClient {
     @PostMapping("/meetup")
     public Meetup creatingANewMeetup(@RequestBody Meetup meetup);
 
-    @PostMapping("/meetup/{category}")
+    @PostMapping("/meetup/category/{category}")
     public List<Meetup> getAllOfTheMeetupsByCategory(String category);
 
     @GetMapping("/user")

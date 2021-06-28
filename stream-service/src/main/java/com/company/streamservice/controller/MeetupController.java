@@ -32,7 +32,7 @@ public class MeetupController {
         return meetupRepo.getById(meetupId);
     }
 
-    @GetMapping("/meetup/{category}")
+    @GetMapping("/meetup/category/{category}")
     public List<Meetup> getMeetupByCategory(@PathVariable String category){
         return meetupRepo.findAllMeetupsByCategory(category);
     }
