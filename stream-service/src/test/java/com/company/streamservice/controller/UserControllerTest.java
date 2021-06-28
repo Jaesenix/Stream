@@ -18,8 +18,8 @@ import static org.junit.Assert.*;
 @WebMvcTest(UserController.class)
 public class UserControllerTest {
 
-    @Autowired
-    private Mockmvc mockmvc;
+//    @Autowired
+//    private Mockmvc mockmvc;
 
     @MockBean
     private User repo;
@@ -31,17 +31,15 @@ public class UserControllerTest {
     private List<User> allUsers = new ArrayList<>();
     private String allUsersJson;
 
-    @Before
-    public void setUp() throws Exception {
-        repoUser = new User();
-        repoUser.setUserId();
-        repoUser.setTitle();
-        repoUser.setDescription();
-        repoUser.setLink();
-        repoUser.setCategory();
-
-        repoJson = mapper.writeValueAsString();
-
-
-    }
+//    @Before
+//    public void setUp() throws Exception {
+//        repoUser = new User();
+//        repoUser.setUserId();
+//        repoUser.setTitle();
+//        repoUser.setDescription();
+//        repoUser.setLink();
+//        repoUser.setCategory();
+//
+//        repoJson = mapper.writeValueAsString();
+//    }
 }

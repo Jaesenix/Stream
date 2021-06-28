@@ -14,7 +14,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(MeetupController.class)
@@ -28,7 +31,7 @@ public class MeetupControllerTests {
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    private Meetup repoMeetup;
+    public Meetup repoMeetup;
     private String repoJson;
     private List<Meetup> allMeetups = new ArrayList<>();
     private String allMeetupsJson;
@@ -36,58 +39,57 @@ public class MeetupControllerTests {
     @org.junit.Before
     public void setUp() throws Exception {
         repoMeetup = new Meetup();
-        repoMeetup.setMeetupId();
-        repoMeetup.setTitle();
-        repoMeetup.setDate();
-        repoMeetup.setTime();
-        repoMeetup.setDescription();
-        repoMeetup.setLink();
-        repoMeetup.setCategory();
+        repoMeetup.setMeetupId(2);
+        repoMeetup.setTitle("Department Happy Hour");
+        repoMeetup.setDate("6/30/21");
+        repoMeetup.setTime("5:00PM");
+        repoMeetup.setDescription("First Friday of the month");
+        repoMeetup.setLink("www.zoom.com/abcd56789");
+        repoMeetup.setCategory("Happy Hour");
     }
 
     @Test
-    public shouldCreateNewMeetupEvent() throws Exception {
+    public void shouldCreateNewMeetupEvent() throws Exception {
         Meetup createMeetup = new Meetup();
-        createMeetup.setMeetupId();
-        createMeetup.setUserId();
-        createMeetup.setTitle();
-        createMeetup.setDate();
-        createMeetup.setTime();
-        createMeetup.setDescription();
-        createMeetup.setLink();
-        createMeetup.setCategory();
+        createMeetup.setMeetupId(1);
+        createMeetup.setUserId(1234);
+        createMeetup.setTitle("Team Discussion");
+        createMeetup.setDate("6/30/21");
+        createMeetup.setTime("2:00 PM");
+        createMeetup.setDescription("Discuss ways to improve team communication.");
+        createMeetup.setLink("www.zoom.com/abcd56789");
+        createMeetup.setCategory("Team Building");
 
         String inputJson = mapper.writeValueAsString(createMeetup);
 
         mockMvc.perform(
                 post("/meetup")
                 .content(inputJson)
-                .contentType(MediaType.APPLICATION_JSON)
-                .andDo(print())
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(content().json(inputJson))
+                .andExpect(content().json(inputJson)
         );
     }
 
-    @Test
-    public void shouldGetAllMeetups() throws Exception {
-        given(repo.getAllMeetups()).willReturn(allMeetups);
+//    @Test
+//    public void shouldGetAllMeetups() throws Exception {
+//        given(repo.getAllMeetups()).willReturn(allMeetups);
+//
+//        mockMvc.perform(
+//                get("/meetup"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().json(allMeetupsJson)
+//        );
+//    }
 
-        mockMvc.perform(
-                get("/meetup"))
-                .andExpect(status().isOk())
-                .andExpect(content().json(allMeetupsJson)
-        );
-    }
-
-    @Test
-    public void shouldGetMeetupById() throws Exception {
-        given(repo.getMeetup()).willReturn(Meetup);
-
-        mockMvc.perform(
-                get("/meetup"))
-                .andExpect((status().isOk())
-                .andExpect((content().json(repoJson))
-        );
-    }
+//    @Test
+//    public void shouldGetMeetupById() throws Exception {
+//        given(repo.getMeetupId()).willReturn(repoMeetup);
+//
+//        mockMvc.perform(
+//                get("/meetup/9999"))
+//                .andExpect(status().isOk())
+//                .andExpect((content().json(repoJson))
+//        );
+//    }
 }
