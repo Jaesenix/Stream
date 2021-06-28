@@ -9,4 +9,8 @@ public interface MeetupRepository extends JpaRepository<Meetup, Integer> {
 
     List<Meetup> findAllMeetupsByCategory(String category);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e98b7fc10ac96d055292f43dfbdb1d7e67cac3f4
 }
