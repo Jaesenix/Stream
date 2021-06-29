@@ -14,14 +14,14 @@ import java.util.List;
 
 public interface ServiceClient {
 
-    @GetMapping("/meetup")
+    @GetMapping("/meetup/category")
     public List<Meetup> getAllOfTheMeetups();
 
     @PostMapping("/meetup")
     public Meetup creatingANewMeetup(@RequestBody Meetup meetup);
 
-    @PostMapping("/meetup/category/{category}")
-    public List<Meetup> getAllOfTheMeetupsByCategory(String category);
+    @GetMapping("/meetup/category/{category}")
+    public List<Meetup> getAllOfTheMeetupsByCategory(@PathVariable String category);
 
     @GetMapping("/user")
     public List<Meetup> getAllOfTheUsers();

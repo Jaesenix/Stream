@@ -16,7 +16,7 @@ public class StreamController {
 
     private ServiceClient serviceClient;
 
-    @RequestMapping(value="/meetup", method = RequestMethod.GET)
+    @RequestMapping(value=("/meetup/category"), method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public List<Meetup> getAllMeetups(){
         System.out.println("called the edge service. getting all meetups");
