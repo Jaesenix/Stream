@@ -21,7 +21,7 @@ public class MeetupController {
         return meetupRepo.save(meetup);
     }
 
-    @GetMapping("/meetup")
+    @GetMapping("/meetup/category")
     @ResponseStatus(HttpStatus.OK)
     public List<Meetup> getAllMeetups(){
         return meetupRepo.findAll();
